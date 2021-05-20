@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Forecast for {{ data.location.name }} ({{ data.location.country }})</h1>
+        </header>
+        <!-- <section>
+            <h2>Now</h2>
+            <img src="{{ data.current.condition.icon }}" alt="">
+            <table>
+                <tr>
+                    <th>Updated</th>
+                    <td>{{ data.current.last_updated }}</td>
+                </tr>
+                <tr>
+                    <th>Wind speed</th>
+                    <td>{{ data.current.wind_kph }} kph</td>
+                </tr>
+                <tr>
+                    <th>Wind direction</th>
+                    <td>{{ data.current.wind_dir }}</td>
+                </tr>
+                <tr>
+                    <th>Wind gust</th>
+                    <td>{{ data.current.gust_kph }} kph</td>
+                </tr>
+                <tr>
+                    <th>Precipitation</th>
+                    <td>{{ data.current.precip_mm }} mm</td>
+                </tr>
+                <tr>
+                    <th>Feels like</th>
+                    <td>{{ data.current.feelslike_c }} °C</td>
+                </tr>
+            </table>
+        </section> -->
+        {% set forecasts = data.forecast.forecastday %}
+        {% for forecast in forecasts %}
+        <section>
+            <h2>{{ forecast.date|day }}</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        {% for hour in forecast.hour|selectattr("is_day") %}
+                        <th>{{ hour.time.split(' ')[-1].split(':')[0] }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        {% for hour in forecast.hour|selectattr("is_day") %}
+                        <td><img src="{{ hour.condition.icon }}" alt=""></td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th>🎲</th>
+                        {% for hour in forecast.hour|selectattr("is_day") %}
+                        <td style="background-color: {{ hour|proba }};"></td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th>💨</th>
+                        {% for hour in forecast.hour|selectattr("is_day") %}
+                        <td style="background-color: {{ hour.wind_kph|gradient(50) }};">{{ hour.wind_kph }}</td>
+                        {% endfor %}
+                    </tr>
+                    <!-- <tr>
+                        <th>🧭</th>
+                        {% for hour in forecast.hour|selectattr("is_day") %}
+                        <td>{{ hour.wind_dir }}</td>
+                        {% endfor %}
+                    </tr> -->
+                    <tr>
+                        <th>🧭</th>
+                        {% for hour in forecast.hour|selectattr("is_day") %}
+                        <td><span style="display: inline-block; transform: rotate({{ hour.wind_degree }}deg);">↓</span></td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th>🌧</th>
+                        {% for hour in forecast.hour|selectattr("is_day") %}
+                        <td>{{ hour.precip_mm }}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th>🌧</th>
+                        {% for hour in forecast.hour|selectattr("is_day") %}
+                        <!-- TODO: account for precip_mm in color scale -->
+                        <td style="background-color: {{ hour.chance_of_rain|gradient(100) }};">{{ hour.chance_of_rain }}%</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        {% endfor %}
+    </div>
+</body>
+</html>
