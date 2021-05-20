@@ -1,3 +1,4 @@
 flask>=2
 requests
 colour
+gunicorn
