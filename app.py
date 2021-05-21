@@ -11,6 +11,12 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
+# top of the scale for wind, kph
+MAX_WIND_ACCEPTABLE = 35
+# top of the scale for rain, mm per hour
+MAX_RAIN_ACCEPTABLE = 1.5
+
+
 @app.route("/")
 def index():
     api_key = os.getenv("WEATHER_API_KEY")
@@ -18,7 +24,7 @@ def index():
     r = requests.get(f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={q}&days=10&aqi=no&alerts=yes")
     r.raise_for_status()
     data = r.json()
-    return render_template("index.html", data=data)
+    return render_template("index.html", data=data, max_rain=MAX_RAIN_ACCEPTABLE)
 
 
 @app.template_filter("gradient")
@@ -44,6 +50,13 @@ def day(value, format="%A %d %b"):
 @app.template_filter("proba")
 def proba(hour):
     """Compute a proba and output gradient color"""
-    MAX_WIND_ACCEPTABLE = 30
-    p = (int(hour["chance_of_rain"]) / 100) * (hour["wind_kph"] / MAX_WIND_ACCEPTABLE)
+    chance = int(hour["chance_of_rain"]) / 100
+    precip = min(hour["precip_mm"], MAX_RAIN_ACCEPTABLE)
+    wind = min(hour["wind_kph"], MAX_WIND_ACCEPTABLE)
+
+    p_precip = (chance * precip) / MAX_RAIN_ACCEPTABLE
+    p_wind = wind / MAX_WIND_ACCEPTABLE
+    # wind is twice as annoying as rain
+    p = (p_precip + p_wind * 2) / 3
+
     return gradient((1 - p) * 100, max=100, end="green")

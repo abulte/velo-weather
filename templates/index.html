@@ -17,6 +17,9 @@
         table > tbody > tr > th {
             font-size: 1.2em;
         }
+        .degree {
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -95,19 +98,21 @@
                     <tr>
                         <th>🧭</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td><span style="display: inline-block; transform: rotate({{ hour.wind_degree }}deg);">↓</span></td>
+                        <td><span class="degree" style="transform: rotate({{ hour.wind_degree }}deg);">↓</span></td>
                         {% endfor %}
                     </tr>
                     <tr>
                         <th>🌧</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td>{{ hour.precip_mm }}</td>
+                        <!-- TODO: move computation to app.py -->
+                        <td style="background-color: {{ ([hour.precip_mm, max_rain]|min * 100)|gradient((max_rain * 100)|int) }};">
+                            {{ hour.precip_mm }}
+                        </td>
                         {% endfor %}
                     </tr>
                     <tr>
                         <th>🌧</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <!-- TODO: account for precip_mm in color scale -->
                         <td style="background-color: {{ hour.chance_of_rain|gradient(100) }};">{{ hour.chance_of_rain }}%</td>
                         {% endfor %}
                     </tr>
