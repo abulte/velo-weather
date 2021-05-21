@@ -5,6 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://unpkg.com/chota@latest">
     <title>Document</title>
+    <style>
+        table {
+            font-size: 0.8em;
+        }
+        td, th {
+            vertical-align: middle;
+            text-align: center;
+            padding: 0.4rem .4rem;
+        }
+        table > tbody > tr > th {
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -58,7 +71,7 @@
                     <tr>
                         <th></th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td><img src="{{ hour.condition.icon }}" alt=""></td>
+                        <td><img style="max-width: 25px;" src="{{ hour.condition.icon }}" alt=""></td>
                         {% endfor %}
                     </tr>
                     <tr>
@@ -102,6 +115,7 @@
             </table>
         </section>
         {% endfor %}
+        <footer>Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a></footer>
     </div>
 </body>
 </html>
