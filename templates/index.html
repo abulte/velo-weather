@@ -27,13 +27,27 @@
             padding-top: 5px;
             margin-bottom: 5px;
         }
+        #location {
+            display: inline-block;
+            width: auto;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        {% set location = data.location.name + ", " + data.location.country if data else 'No data found' %}
         <header>
-            <h1>Forecast for {{ data.location.name }} ({{ data.location.country }})</h1>
+            <h1>🚴💨 velo.france.sh</h1>
         </header>
+        <section>
+            <form method="GET" action="/">
+                <input type="text" name="location" id="location" value="{{ location }}">
+                <button type="submit">Go !</button>
+            </form>
+        </section>
+        {% if not data %}
+        Oups
+        {% else %}
         <!-- <section>
             <h2>Now</h2>
             <img src="{{ data.current.condition.icon }}" alt="">
@@ -127,6 +141,7 @@
             </table>
         </section>
         {% endfor %}
+        {% endif %}
         <footer><a href="https://github.com/abulte/velo-weather">Source code</a></footer>
     </div>
 </body>

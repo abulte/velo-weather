@@ -5,7 +5,7 @@ from datetime import date
 import requests
 from colour import Color
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
@@ -19,11 +19,14 @@ MAX_RAIN_ACCEPTABLE = 1.5
 
 @app.route("/")
 def index():
+    data = None
+    q = request.args.get("location", "Poissy, France")
     api_key = os.getenv("WEATHER_API_KEY")
-    q = "Poissy, France"
     r = requests.get(f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={q}&days=10&aqi=no&alerts=yes")
-    r.raise_for_status()
-    data = r.json()
+    # probably location unknow
+    if r.status_code != 400:
+        r.raise_for_status()
+        data = r.json()
     return render_template("index.html", data=data, max_rain=MAX_RAIN_ACCEPTABLE)
 
 
