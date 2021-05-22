@@ -41,6 +41,13 @@ def gradient(value, max, end="red"):
     return gradient[int(value)].hex
 
 
+@app.template_filter("gradient_precip")
+def gradient_precip(precip_mm):
+    """Handle gradient for precip_mm"""
+    precip = min(precip_mm, MAX_RAIN_ACCEPTABLE)
+    return gradient(precip * 100, int(MAX_RAIN_ACCEPTABLE * 100))
+
+
 @app.template_filter("day")
 def day(value, format="%A %d %b"):
     """Format a date from ISO"""

@@ -9,6 +9,10 @@
         table {
             font-size: 0.8em;
         }
+        h2 > img {
+            max-width: 30px;
+            margin-bottom: -5px;
+        }
         td, th {
             vertical-align: middle;
             text-align: center;
@@ -81,7 +85,7 @@
         {% set forecasts = data.forecast.forecastday %}
         {% for forecast in forecasts %}
         <section>
-            <h2>{{ forecast.date|day }}</h2>
+            <h2><img src="{{ forecast.day.condition.icon }}" alt="{{ forecast.day.condition.text }}"> {{ forecast.date|day }}</h2>
             <table>
                 <thead>
                     <tr>
@@ -95,17 +99,17 @@
                     <tr>
                         <th></th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td><img style="max-width: 25px;" src="{{ hour.condition.icon }}" alt=""></td>
+                        <td><img style="max-width: 25px;" src="{{ hour.condition.icon }}" alt="{{ hour.condition.text }}"></td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th>🎲</th>
+                        <th title="Very complicated opportunity indicator">🎲</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour|proba }};"></td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th>💨</th>
+                        <th title="Wind speed (kph)">💨</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour.wind_kph|gradient(50) }};">{{ hour.wind_kph }}</td>
                         {% endfor %}
@@ -117,22 +121,21 @@
                         {% endfor %}
                     </tr> -->
                     <tr>
-                        <th>🧭</th>
+                        <th title="Wind direction">🧭</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td><span class="degree" style="transform: rotate({{ hour.wind_degree }}deg);">↓</span></td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th>🌧</th>
+                        <th title="Precipitation (mm)">🌧</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <!-- TODO: move computation to app.py -->
-                        <td style="background-color: {{ ([hour.precip_mm, max_rain]|min * 100)|gradient((max_rain * 100)|int) }};">
+                        <td style="background-color: {{ hour.precip_mm|gradient_precip }};">
                             {{ hour.precip_mm }}
                         </td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th>🌧</th>
+                        <th title="Chance of rain">🌧</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour.chance_of_rain|gradient(100) }};">{{ hour.chance_of_rain }}%</td>
                         {% endfor %}
