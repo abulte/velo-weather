@@ -27,7 +27,7 @@ def index():
     if r.status_code != 400:
         r.raise_for_status()
         data = r.json()
-    return render_template("index.html", data=data, max_rain=MAX_RAIN_ACCEPTABLE)
+    return render_template("index.html", data=data, max_rain=MAX_RAIN_ACCEPTABLE, max_wind=MAX_WIND_ACCEPTABLE)
 
 
 @app.template_filter("gradient")

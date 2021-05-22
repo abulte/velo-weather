@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://unpkg.com/chota@latest">
-    <title>Document</title>
+    <title>🚴💨 velo.france.sh</title>
     <style>
         table {
             font-size: 0.8em;
@@ -27,13 +27,25 @@
         footer {
             border-top: 1px solid lightgrey;
             font-size: 0.8em;
-            margin-top: 10px;
-            padding-top: 5px;
-            margin-bottom: 5px;
+            margin-top: 2em;
+            padding-top: 0.5em;
+            margin-bottom: 0.5em;
         }
         #location {
             display: inline-block;
             width: auto;
+        }
+        form {
+            margin: 0.9em 0 .7em;
+        }
+        div.form {
+            text-align: right;
+        }
+        details > ul {
+            list-style-type: none;
+        }
+        section {
+            margin-top: 2em;
         }
     </style>
 </head>
@@ -41,17 +53,39 @@
     <div class="container">
         {% set location = data.location.name + ", " + data.location.country if data else 'No data found' %}
         <header>
-            <h1>🚴💨 velo.france.sh</h1>
+            <div class="row">
+                <div class="col">
+                    <h1>🚴💨 velo.france.sh</h1>
+                </div>
+                <div class="col form">
+                    <form method="GET" action="/">
+                        <input type="text" name="location" id="location" value="{{ location }}">
+                        <button type="submit">Go !</button>
+                    </form>
+                </div>
+            </div>
         </header>
-        <section>
-            <form method="GET" action="/">
-                <input type="text" name="location" id="location" value="{{ location }}">
-                <button type="submit">Go !</button>
-            </form>
-        </section>
         {% if not data %}
-        Oups
+        🤕 no data found
         {% else %}
+        <details>
+            <summary>💡 Legend</summary>
+            <p>
+                <ul>
+                    <li>
+                        🎲 A ride opportunity indicator, based on rain and wind.
+                        See source code <code>def proba(hour):</code> for details.
+                        Linear gradient from 0 (white) to 100 (green).
+                    </li>
+                    <li>💨 Wind speed in kph, color scale from 0 (white) to {{ max_wind }} (red), caped on max wind speed of {{ max_wind }}kph.</li>
+                    <li>🧭 Wind directions, in degrees.</li>
+                    <li>
+                        🌧 Precipitation in mm for an hour.
+                        Color scale from 0 (white) to 100 (red), based on rain probability * preciptation caped at {{ max_rain }}mm.</li>
+                    <li>🌧 Rain probability, color scale from 0 (white) to 100 (red).</li>
+                </ul>
+            </p>
+        </details>
         <!-- <section>
             <h2>Now</h2>
             <img src="{{ data.current.condition.icon }}" alt="">
@@ -111,7 +145,7 @@
                     <tr>
                         <th title="Wind speed (kph)">💨</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td style="background-color: {{ hour.wind_kph|gradient(50) }};">{{ hour.wind_kph }}</td>
+                        <td style="background-color: {{ hour.wind_kph|gradient(max_wind) }};">{{ hour.wind_kph }}</td>
                         {% endfor %}
                     </tr>
                     <!-- <tr>
@@ -123,7 +157,7 @@
                     <tr>
                         <th title="Wind direction">🧭</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td><span class="degree" style="transform: rotate({{ hour.wind_degree }}deg);">↓</span></td>
+                        <td title="{{ hour.wind_dir }}"><span class="degree" style="transform: rotate({{ hour.wind_degree }}deg);">↓</span></td>
                         {% endfor %}
                     </tr>
                     <tr>
