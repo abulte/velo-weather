@@ -48,6 +48,22 @@ def gradient_precip(precip_mm):
     return gradient(precip * 100, int(MAX_RAIN_ACCEPTABLE * 100))
 
 
+@app.template_filter("gradient_temp")
+def gradient_temp(temp, ideal):
+    """Handle gradient for temp around ideal temp"""
+    _max = 30
+    temp = temp if temp > 0 else 0
+    temp = temp if temp < _max else temp
+    c1 = Color("blue")
+    c2 = Color("white")
+    gradient_cold = list(c1.range_to(c2, ideal + 1))
+    c1 = Color("white")
+    c2 = Color("red")
+    gradient_hot = list(c1.range_to(c2, _max + 1))
+    gradient = gradient_cold + gradient_hot
+    return gradient[int(temp)].hex
+
+
 @app.template_filter("day")
 def day(value, format="%A %d %b"):
     """Format a date from ISO"""
