@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/chota@latest">
     <title>🚴💨 velo.france.sh</title>
     <style>
         table {
             font-size: 0.8em;
+            display: block;
         }
         h2 > img {
             max-width: 30px;
@@ -36,16 +38,26 @@
             width: auto;
         }
         form {
-            margin: 1em 0 .7em;
-        }
-        div.form {
-            text-align: right;
+            margin: 0 0 2em;
         }
         details > ul {
             list-style-type: none;
         }
         section {
             margin-top: 2em;
+        }
+
+        /* Portrait tablet and bigger */
+        @media(min-width: 768px) {
+            table {
+                display: table;
+            }
+            form {
+                margin: 1em 0 .7em;
+            }
+            div.form {
+                text-align: right;
+            }
         }
     </style>
 </head>
