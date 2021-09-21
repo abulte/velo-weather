@@ -9,6 +9,7 @@
     <style>
         table {
             font-size: 0.8em;
+            display: block;
         }
         h2 > img {
             max-width: 30px;
@@ -47,6 +48,13 @@
         }
         section {
             margin-top: 2em;
+        }
+
+        /* Portrait tablet and bigger */
+        @media(min-width: 768px) {
+            table {
+                display: table;
+            }
         }
     </style>
 </head>
