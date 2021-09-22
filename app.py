@@ -51,17 +51,23 @@ def gradient_precip(precip_mm):
 @app.template_filter("gradient_temp")
 def gradient_temp(temp, ideal):
     """Handle gradient for temp around ideal temp"""
-    _max = 30
+    _max = 35
     temp = temp if temp > 0 else 0
     temp = temp if temp < _max else temp
-    c1 = Color("blue")
-    c2 = Color("white")
-    gradient_cold = list(c1.range_to(c2, ideal + 1))
-    c1 = Color("white")
-    c2 = Color("red")
-    gradient_hot = list(c1.range_to(c2, _max + 1))
-    gradient = gradient_cold + gradient_hot
-    return gradient[int(temp)].hex
+
+    gradient = []
+
+    for temperature in range(ideal):
+        temp_luminance = 50 + (50 / ideal) * temperature
+        gradient.append("hsl(220,100%,{}%)".format(round(temp_luminance)))
+
+    for temperature in range(_max - ideal + 1):
+        temp_luminance = 100 - (50 / (_max - ideal + 1)) * temperature
+        gradient.append("hsl(0,100%,{}%)".format(round(temp_luminance)))
+
+    gradient.append("hsl(0,100%,50%)")
+
+    return gradient[round(temp)]
 
 
 @app.template_filter("day")
