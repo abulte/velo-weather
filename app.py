@@ -6,7 +6,7 @@ import requests
 from colour import Color
 
 from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask_babel import Babel, format_date, _
 
 
 app = Flask(__name__)
@@ -77,11 +77,14 @@ def gradient_temp(temp, ideal):
 
 @app.template_filter("day")
 def day(value, format="%A %d %b"):
-    """Format a date from ISO"""
+    """Use Babel to localize a date from ISO with language-specific format"""
     if value is None:
         return ""
     d = date.fromisoformat(value)
-    return d.strftime(format)
+    
+    localized_format = _('EEEE, MMMM d')
+
+    return format_date(date=d, format=localized_format)
 
 
 @app.template_filter("proba")
