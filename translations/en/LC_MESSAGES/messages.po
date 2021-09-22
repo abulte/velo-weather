@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-22 11:38+0200\n"
+"POT-Creation-Date: 2021-09-22 12:16+0200\n"
 "PO-Revision-Date: 2021-09-20 21:35+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app.py:85
+#: app.py:86
 msgid "EEEE, MMMM d"
 msgstr ""
 
@@ -99,7 +99,7 @@ msgid "Very complicated opportunity indicator"
 msgstr ""
 
 #: templates/index.html:149
-msgid "Wind speed (kph)"
+msgid "Wind speed (<abbr title='kilometers per hour'>kph</abbr>)"
 msgstr ""
 
 #: templates/index.html:155
@@ -107,15 +107,23 @@ msgid "Wind direction"
 msgstr ""
 
 #: templates/index.html:161
-msgid "Precipitation (mm)"
+msgid "Precipitation (<abbr title='millimeters'>mm</abbr>)"
 msgstr ""
 
 #: templates/index.html:169
 msgid "Chance of rain"
 msgstr ""
 
+#: templates/index.html:171
+msgid "&percnt;"
+msgstr ""
+
 #: templates/index.html:175
 msgid "Temperature"
+msgstr ""
+
+#: templates/index.html:177 templates/index.html:183
+msgid "°C"
 msgstr ""
 
 #: templates/index.html:181
@@ -265,5 +273,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Buy me a pizza"
+#~ msgstr ""
+
+#~ msgid "%"
 #~ msgstr ""
 

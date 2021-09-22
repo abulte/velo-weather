@@ -146,7 +146,7 @@
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="{{ _("Wind speed (kph)") }}">💨</th>
+                        <th title="{{ _("Wind speed (<abbr title='kilometers per hour'>kph</abbr>)") }}">💨</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour.wind_kph|gradient(max_wind) }};">{{ hour.wind_kph }}</td>
                         {% endfor %}
@@ -158,7 +158,7 @@
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="{{ _("Precipitation (mm)") }}">🌧</th>
+                        <th title="{{ _("Precipitation (<abbr title='millimeters'>mm</abbr>)") }}">🌧</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour.precip_mm|gradient_precip }};">
                             {{ hour.precip_mm }}
@@ -168,19 +168,19 @@
                     <tr>
                         <th title="{{ _("Chance of rain") }}">☔️</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td style="background-color: {{ hour.chance_of_rain|gradient(100) }};">{{ hour.chance_of_rain }}%</td>
+                        <td style="background-color: {{ hour.chance_of_rain|gradient(100) }};">{{ hour.chance_of_rain }}{{_("&percnt;")}}</td>
                         {% endfor %}
                     </tr>
                     <tr>
                         <th title="{{ _("Temperature") }}">🌡</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td style="background-color: {{ hour.temp_c|gradient_temp(19) }};">{{ hour.temp_c }}°</td>
+                        <td style="background-color: {{ hour.temp_c|gradient_temp(19) }};">{{ hour.temp_c }}{{_("°C")}}</td>
                         {% endfor %}
                     </tr>
                     <tr>
                         <th title="{{ _("Feels like") }}">🥶</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td style="background-color: {{ hour.feelslike_c|gradient_temp(19) }};">{{ hour.feelslike_c }}°</td>
+                        <td style="background-color: {{ hour.feelslike_c|gradient_temp(19) }};">{{ hour.feelslike_c }}{{_("°C")}}</td>
                         {% endfor %}
                     </tr>
                 </tbody>

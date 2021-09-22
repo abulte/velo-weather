@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-22 11:38+0200\n"
+"POT-Creation-Date: 2021-09-22 12:16+0200\n"
 "PO-Revision-Date: 2021-09-20 21:34+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app.py:85
+#: app.py:86
 msgid "EEEE, MMMM d"
 msgstr "EEEE d MMMM"
 
@@ -115,24 +115,32 @@ msgid "Very complicated opportunity indicator"
 msgstr "Indicateur d’opportunité super compliqué"
 
 #: templates/index.html:149
-msgid "Wind speed (kph)"
-msgstr "Force du vent (km/h)"
+msgid "Wind speed (<abbr title='kilometers per hour'>kph</abbr>)"
+msgstr "Vitesse du vent (<abbr title='kilomètres par heure'>km/h</abbr>)"
 
 #: templates/index.html:155
 msgid "Wind direction"
 msgstr "Direction du vent"
 
 #: templates/index.html:161
-msgid "Precipitation (mm)"
-msgstr "Précipitations (mm)"
+msgid "Precipitation (<abbr title='millimeters'>mm</abbr>)"
+msgstr "Précipitation (<abbr title='millmètres'>mm</abbr>)"
 
 #: templates/index.html:169
 msgid "Chance of rain"
 msgstr "Risque de pluie"
 
+#: templates/index.html:171
+msgid "&percnt;"
+msgstr "&nbsp;&percnt;"
+
 #: templates/index.html:175
 msgid "Temperature"
 msgstr "Température"
+
+#: templates/index.html:177 templates/index.html:183
+msgid "°C"
+msgstr "&nbsp;°C"
 
 #: templates/index.html:181
 msgid "Feels like"
