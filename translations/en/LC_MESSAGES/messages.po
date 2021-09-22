@@ -1,0 +1,265 @@
+# English translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-09-22 11:38+0200\n"
+"PO-Revision-Date: 2021-09-20 21:35+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: templates/index.html:54
+msgid "No data found"
+msgstr ""
+
+#: templates/index.html:62
+msgid "Location"
+msgstr ""
+
+#: templates/index.html:64
+msgid "Go !"
+msgstr ""
+
+#: templates/index.html:70
+msgid "No data found. Wrong location?"
+msgstr ""
+
+#: templates/index.html:73
+msgid "Legend"
+msgstr ""
+
+#: templates/index.html:77
+msgid "A ride opportunity indicator, based on rain and wind."
+msgstr ""
+
+#: templates/index.html:78
+msgid "See source code <code>def proba(hour):</code> for details."
+msgstr ""
+
+#: templates/index.html:79
+msgid "Linear gradient from 0 (white) to 100 (green)."
+msgstr ""
+
+#: templates/index.html:81
+#, python-format
+msgid ""
+"Wind speed in kilometers per hour, color scale from 0 (white) to "
+"%(max_wind)s (red), capped at the max wind speed of %(max_wind)s<abbr "
+"title='kilometers per hour'>kph</abbr>."
+msgstr ""
+
+#: templates/index.html:82
+msgid "Wind directions, in degrees."
+msgstr ""
+
+#: templates/index.html:84
+msgid "Precipitation in millimeters for an hour."
+msgstr ""
+
+#: templates/index.html:85
+#, python-format
+msgid ""
+"Color scale from 0 (white) to 100&percnt; (red), based on (rain "
+"probability × preciptation) capped at %(max_rain)s<abbr "
+"title='millimeters'>mm</abbr>."
+msgstr ""
+
+#: templates/index.html:86
+msgid "Rain probability, color scale from 0 (white) to 100&percnt; (red)."
+msgstr ""
+
+#: templates/index.html:87
+msgid ""
+"Temperature in degree Celcius. Scale from 0<abbr title='degrees "
+"Celcius'>°C</abbr> (blue) to white (19<abbr title='degrees "
+"Celcius'>°C</abbr>) and from white to red (30<abbr title='degrees "
+"Celcius'>°C</abbr>)."
+msgstr ""
+
+#: templates/index.html:88
+msgid "Apparent temperature, in degree Celcius. Same scale as temperature."
+msgstr ""
+
+#: templates/index.html:143
+msgid "Very complicated opportunity indicator"
+msgstr ""
+
+#: templates/index.html:149
+msgid "Wind speed (kph)"
+msgstr ""
+
+#: templates/index.html:155
+msgid "Wind direction"
+msgstr ""
+
+#: templates/index.html:161
+msgid "Precipitation (mm)"
+msgstr ""
+
+#: templates/index.html:169
+msgid "Chance of rain"
+msgstr ""
+
+#: templates/index.html:175
+msgid "Temperature"
+msgstr ""
+
+#: templates/index.html:181
+msgid "Feels like"
+msgstr ""
+
+#: templates/index.html:192
+msgid "Source code"
+msgstr ""
+
+#: templates/index.html:192
+msgid "Buy me a pizza"
+msgstr ""
+
+#~ msgid ""
+#~ "Wind speed in <abbr title=\"kilometers "
+#~ "per hour\">kph</abbr>, color scale from "
+#~ "0 (white) to %(max_wind)s (red), capped"
+#~ " to max wind speed of "
+#~ "%(max_wind)s<abbr title=\"kilometers per "
+#~ "hour\">kph</abbr>."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Color scale from 0 (white) to 100"
+#~ " (red), based on rain probability *"
+#~ " preciptation capped to %(max_rain)s<abbr "
+#~ "title=\"millimeters\">mm</abbr>."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Temperature in <abbr title=\"degrees "
+#~ "Celcius\">°C</abbr>. Scale from 0<abbr "
+#~ "title=\"degrees Celcius\">°C</abbr> (blue) to "
+#~ "white (19<abbr title=\"degrees Celcius\">°C</abbr>)"
+#~ " and from white to red (30<abbr "
+#~ "title=\"degrees Celcius\">°C</abbr>)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Feels like <abbr title=\"degrees "
+#~ "Celcius\">°C</abbr>. Same scale as "
+#~ "temperature."
+#~ msgstr ""
+
+#~ msgid "Precipitation in <abbr title=\"millimeters\">mm</abbr> for an hour."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Color scale from 0 (white) to 100%"
+#~ " (red), based on rain probability  "
+#~ "preciptation capped at %(max_rain)s<abbr "
+#~ "title=\"millimeters\">mm</abbr>."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Color scale from 0 (white) to "
+#~ "100&percent; (red), based on rain "
+#~ "probability  preciptation capped at "
+#~ "%(max_rain)s<abbr title=\"millimeters\">mm</abbr>."
+#~ msgstr ""
+
+#~ msgid "Rain probability, color scale from 0 (white) to 100 (red)."
+#~ msgstr ""
+
+#~ msgid "No data found"
+#~ msgstr ""
+
+#~ msgid "Location"
+#~ msgstr ""
+
+#~ msgid "Go !"
+#~ msgstr ""
+
+#~ msgid "No data found. Wrong location?"
+#~ msgstr ""
+
+#~ msgid "Legend"
+#~ msgstr ""
+
+#~ msgid "A ride opportunity indicator, based on rain and wind."
+#~ msgstr ""
+
+#~ msgid "See source code <code>def proba(hour):</code> for details."
+#~ msgstr ""
+
+#~ msgid "Linear gradient from 0 (white) to 100 (green)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Wind speed in kilometers per hour, "
+#~ "color scale from 0 (white) to "
+#~ "%(max_wind)s (red), capped at the max"
+#~ " wind speed of %(max_wind)s<abbr "
+#~ "title=\"kilometers per hour\">kph</abbr>."
+#~ msgstr ""
+
+#~ msgid "Wind directions, in degrees."
+#~ msgstr ""
+
+#~ msgid "Precipitation in millimeters for an hour."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Color scale from 0 (white) to "
+#~ "100&percnt; (red), based on (rain "
+#~ "probability × preciptation) capped at "
+#~ "%(max_rain)s<abbr title=\"millimeters\">mm</abbr>."
+#~ msgstr ""
+
+#~ msgid "Rain probability, color scale from 0 (white) to 100&percnt; (red)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Temperature in degree Celcius. Scale "
+#~ "from 0<abbr title=\"degrees Celcius\">°C</abbr> "
+#~ "(blue) to white (19<abbr title=\"degrees "
+#~ "Celcius\">°C</abbr>) and from white to "
+#~ "red (30<abbr title=\"degrees Celcius\">°C</abbr>)."
+#~ msgstr ""
+
+#~ msgid "Apparent temperature, in degree Celcius. Same scale as temperature."
+#~ msgstr ""
+
+#~ msgid "Very complicated opportunity indicator"
+#~ msgstr ""
+
+#~ msgid "Wind speed (kph)"
+#~ msgstr ""
+
+#~ msgid "Wind direction"
+#~ msgstr ""
+
+#~ msgid "Precipitation (mm)"
+#~ msgstr ""
+
+#~ msgid "Chance of rain"
+#~ msgstr ""
+
+#~ msgid "Temperature"
+#~ msgstr ""
+
+#~ msgid "Feels like"
+#~ msgstr ""
+
+#~ msgid "Source code"
+#~ msgstr ""
+
+#~ msgid "Buy me a pizza"
+#~ msgstr ""
+
