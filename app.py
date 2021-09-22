@@ -2,6 +2,7 @@ import os
 
 from datetime import date
 
+import json
 import requests
 from colour import Color
 
@@ -100,3 +101,23 @@ def proba(hour):
     p = (p_precip + p_wind * 2) / 3
 
     return gradient((1 - p) * 100, max=100, end="green")
+
+
+@app.template_filter("localized_condition")
+def localized_condition(code):
+    """Translate weather condition from code"""
+    
+    # conditions list from https://www.weatherapi.com/docs/#weather-icons
+    c_file = open('translations/conditions.json')
+    c_data = json.loads(c_file.read())
+
+    condition = next((item for item in c_data if item['code'] == code), None)
+
+    for lang in condition['languages']:
+        if lang['lang_iso'] == get_locale():
+            localized_condition_text = lang['day_text']
+            break
+    else:
+        localized_condition_text = condition['day']
+
+    return localized_condition_text
