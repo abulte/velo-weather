@@ -34,7 +34,7 @@ def index():
 def gradient(value, max, end="red"):
     """With a value from 0 to max, generate the correct gradient"""
     value = int(value)
-    c1 = Color("white")
+    c1 = Color(hsl=(0, 1, 1))
     c2 = Color(end)
     gradient = list(c1.range_to(c2, max + 1))
     value = value if value < max else value
