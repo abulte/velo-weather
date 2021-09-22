@@ -6,10 +6,21 @@ import requests
 from colour import Color
 
 from flask import Flask, render_template, request
+from flask_babel import Babel
 
 
 app = Flask(__name__)
 
+app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
+app.config['LANGUAGES'] = ['en', 'fr']
+
+babel = Babel(app)
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+app.jinja_env.globals['get_locale'] = get_locale
 
 # top of the scale for wind, kph
 MAX_WIND_ACCEPTABLE = 35
