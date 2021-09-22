@@ -146,7 +146,7 @@
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="{{ _("Wind speed (<abbr title='kilometers per hour'>kph</abbr>)") }}">💨</th>
+                        <th title="{{ _("Wind speed (kph)") }}">💨</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour.wind_kph|gradient(max_wind) }};">{{ hour.wind_kph }}</td>
                         {% endfor %}
@@ -158,7 +158,7 @@
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="{{ _("Precipitation (<abbr title='millimeters'>mm</abbr>)") }}">🌧</th>
+                        <th title="{{ _("Precipitation (mm)") }}">🌧</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour.precip_mm|gradient_precip }};">
                             {{ hour.precip_mm }}

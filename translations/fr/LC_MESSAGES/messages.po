@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-22 12:16+0200\n"
+"POT-Creation-Date: 2021-09-22 12:18+0200\n"
 "PO-Revision-Date: 2021-09-20 21:34+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -115,16 +115,16 @@ msgid "Very complicated opportunity indicator"
 msgstr "Indicateur d’opportunité super compliqué"
 
 #: templates/index.html:149
-msgid "Wind speed (<abbr title='kilometers per hour'>kph</abbr>)"
-msgstr "Vitesse du vent (<abbr title='kilomètres par heure'>km/h</abbr>)"
+msgid "Wind speed (kph)"
+msgstr "Vitesse du vent (km/h)"
 
 #: templates/index.html:155
 msgid "Wind direction"
 msgstr "Direction du vent"
 
 #: templates/index.html:161
-msgid "Precipitation (<abbr title='millimeters'>mm</abbr>)"
-msgstr "Précipitation (<abbr title='millmètres'>mm</abbr>)"
+msgid "Precipitation (mm)"
+msgstr "Précipitation (mm)"
 
 #: templates/index.html:169
 msgid "Chance of rain"
@@ -153,4 +153,3 @@ msgstr "Code source"
 #: templates/index.html:192
 msgid "Buy me a pizza"
 msgstr "Offrez-moi une pizza"
-
