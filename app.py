@@ -43,7 +43,7 @@ def gradient(value, max, end="red"):
 
 @app.template_filter("precip_percent")
 def precip_percent(precip_mm):
-    """Handle gradient for precip_mm"""
+    """Handle vertical scale for precip_mm"""
     precip_mm = precip_mm + 1 if precip_mm > 0 else precip_mm
     precip_mm = min(precip_mm, 6)
     return (precip_mm / 6) * 100
