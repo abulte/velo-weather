@@ -41,11 +41,12 @@ def gradient(value, max, end="red"):
     return gradient[int(value)].hex
 
 
-@app.template_filter("gradient_precip")
-def gradient_precip(precip_mm):
+@app.template_filter("precip_percent")
+def precip_percent(precip_mm):
     """Handle gradient for precip_mm"""
-    precip = min(precip_mm, MAX_RAIN_ACCEPTABLE)
-    return gradient(precip * 100, int(MAX_RAIN_ACCEPTABLE * 100))
+    precip_mm = precip_mm + 1 if precip_mm > 0 else precip_mm
+    precip_mm = min(precip_mm, 6)
+    return (precip_mm / 6) * 100
 
 
 @app.template_filter("gradient_temp")
