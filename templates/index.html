@@ -47,6 +47,9 @@
         section {
             margin-top: 2em;
         }
+        small {
+            font-size: .8em;
+        }
     </style>
 </head>
 <body>
@@ -154,7 +157,11 @@
                     <tr>
                         <th title="{{ _("Wind direction") }}">🧭</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td title="{{ hour.wind_dir }}"><span class="degree" style="transform: rotate({{ hour.wind_degree }}deg);">↓</span></td>
+                        <td>
+                            <span aria-hidden class="degree" style="transform: rotate({{ hour.wind_degree }}deg);">↓</span>
+                            <br>
+                            <small><abbr title="{{ hour.wind_dir|localized_azimuth|last }}">{{ hour.wind_dir|localized_azimuth|first }}</abbr></small>
+                        </td>
                         {% endfor %}
                     </tr>
                     <tr>

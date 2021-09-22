@@ -121,3 +121,16 @@ def localized_condition(code):
         localized_condition_text = condition['day']
 
     return localized_condition_text
+
+
+@app.template_filter("localized_azimuth")
+def localized_azimuth(code):
+    """Translate azimuth from code"""
+    
+    # conditions list from https://www.weatherapi.com/docs/#weather-icons
+    a_file = open('translations/azimuths.json')
+    a_data = json.loads(a_file.read())
+
+    azimuth = a_data[code][get_locale()]
+
+    return azimuth
