@@ -196,7 +196,9 @@
                     <tr>
                         <th title="Chance of rain">☔️</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td class="cell_precipitation" style="--bg-color: hsl(210, 80%, {{ 100 - hour.chance_of_rain / 2 }}%); --bg-height: {{ hour.precip_mm|precip_percent }}%;"><span class="value">{{ hour.chance_of_rain }}%</span></td>
+                        <td class="cell_precipitation" style="--bg-color: hsl(210, 80%, {{ 100 - hour.chance_of_rain / 2 }}%); --bg-height: {{ hour.precip_mm|precip_percent }}%;" title="Chance of rain is {{ hour.chance_of_rain }}%, and precipitation is {{ hour.precip_mm }} millimeters.">
+                            <span class="value">{{ hour.chance_of_rain }}%</span>
+                        </td>
                         {% endfor %}
                     </tr>
                     <tr>
