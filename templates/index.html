@@ -108,45 +108,12 @@
                     </li>
                     <li>💨 Wind speed in kph, color scale from 0 (white) to {{ max_wind }} (red), caped on max wind speed of {{ max_wind }}kph.</li>
                     <li>🧭 Wind directions, in degrees.</li>
-                    <li>
-                        🌧 Precipitation in mm for an hour.
-                        Color scale from 0 (white) to 100 (red), based on rain probability * preciptation caped at {{ max_rain }}mm.</li>
-                    <li>☔️ Rain probability, color scale from 0 (white) to 100 (red).</li>
                     <li>🌡 Temperature in °C. Scale from 0°C (blue) to white (19°C) and from white to red (35°C).</li>
                     <li>🥶 Feels like °C. Same scale as temperature.</li>
+                    <li>☔️ Rain probability in percent, expected precipiation in mm as vertical scale (caped to 5mm).</li>
                 </ul>
             </p>
         </details>
-        <!-- <section>
-            <h2>Now</h2>
-            <img src="{{ data.current.condition.icon }}" alt="">
-            <table>
-                <tr>
-                    <th>Updated</th>
-                    <td>{{ data.current.last_updated }}</td>
-                </tr>
-                <tr>
-                    <th>Wind speed</th>
-                    <td>{{ data.current.wind_kph }} kph</td>
-                </tr>
-                <tr>
-                    <th>Wind direction</th>
-                    <td>{{ data.current.wind_dir }}</td>
-                </tr>
-                <tr>
-                    <th>Wind gust</th>
-                    <td>{{ data.current.gust_kph }} kph</td>
-                </tr>
-                <tr>
-                    <th>Precipitation</th>
-                    <td>{{ data.current.precip_mm }} mm</td>
-                </tr>
-                <tr>
-                    <th>Feels like</th>
-                    <td>{{ data.current.feelslike_c }} °C</td>
-                </tr>
-            </table>
-        </section> -->
         {% set forecasts = data.forecast.forecastday %}
         {% for forecast in forecasts %}
         <section>
@@ -194,14 +161,6 @@
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="Chance of rain">☔️</th>
-                        {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td class="cell_precipitation" style="--bg-color: hsl(210, 80%, {{ 100 - hour.chance_of_rain / 2 }}%); --bg-height: {{ hour.precip_mm|precip_percent }}%;" title="Chance of rain is {{ hour.chance_of_rain }}%, and precipitation is {{ hour.precip_mm }} millimeters.">
-                            <span class="value">{{ hour.chance_of_rain }}%</span>
-                        </td>
-                        {% endfor %}
-                    </tr>
-                    <tr>
                         <th title="Temperature">🌡</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour.temp_c|gradient_temp(19) }};"><span class="value">{{ hour.temp_c }}°</span></td>
@@ -211,6 +170,14 @@
                         <th title="Feels like">🥶</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour.feelslike_c|gradient_temp(19) }};"><span class="value">{{ hour.feelslike_c }}°</span></td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th title="Chance of rain">☔️</th>
+                        {% for hour in forecast.hour|selectattr("is_day") %}
+                        <td class="cell_precipitation" style="--bg-color: hsl(210, 80%, {{ 100 - hour.chance_of_rain / 2 }}%); --bg-height: {{ hour.precip_mm|precip_percent }}%;" title="Chance of rain is {{ hour.chance_of_rain }}%, and precipitation is {{ hour.precip_mm }} millimeters.">
+                            <span class="value">{{ hour.chance_of_rain }}%</span>
+                        </td>
                         {% endfor %}
                     </tr>
                 </tbody>
