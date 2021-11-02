@@ -137,8 +137,8 @@
                     <tr>
                         <th title="Very complicated opportunity indicator">🎲</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td style="background-color: {{ hour|proba }};">
-                            <span class="value"></span>
+                        <td style="background-color: {{ hour|proba|gradient(100, end='green') }};">
+                            <span class="value">{{ hour|proba }}%</span>
                         </td>
                         {% endfor %}
                     </tr>

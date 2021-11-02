@@ -82,7 +82,7 @@ def day(value, format="%A %d %b"):
 
 @app.template_filter("proba")
 def proba(hour):
-    """Compute a proba and output gradient color"""
+    """Compute a proba based on arbitraty comfort parameters"""
     chance = int(hour["chance_of_rain"]) / 100
     precip = min(hour["precip_mm"], MAX_RAIN_ACCEPTABLE)
     wind = min(hour["wind_kph"], MAX_WIND_ACCEPTABLE)
@@ -92,4 +92,4 @@ def proba(hour):
     # wind is twice as annoying as rain
     p = (p_precip + p_wind * 2) / 3
 
-    return gradient((1 - p) * 100, max=100, end="green")
+    return int(round((1 - p) * 100, 0))
