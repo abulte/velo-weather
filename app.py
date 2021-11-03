@@ -47,34 +47,41 @@ def index():
 def gradient(value, max, end="red"):
     """With a value from 0 to max, generate the correct gradient"""
     value = int(value)
-    c1 = Color("white")
+    c1 = Color(hsl=(0, 1, 1))
     c2 = Color(end)
     gradient = list(c1.range_to(c2, max + 1))
     value = value if value < max else value
     return gradient[int(value)].hex
 
 
-@app.template_filter("gradient_precip")
-def gradient_precip(precip_mm):
-    """Handle gradient for precip_mm"""
-    precip = min(precip_mm, MAX_RAIN_ACCEPTABLE)
-    return gradient(precip * 100, int(MAX_RAIN_ACCEPTABLE * 100))
+@app.template_filter("precip_percent")
+def precip_percent(precip_mm):
+    """Handle vertical scale for precip_mm"""
+    precip_mm = precip_mm + 1 if precip_mm > 0 else precip_mm
+    precip_mm = min(precip_mm, 6)
+    return (precip_mm / 6) * 100
 
 
 @app.template_filter("gradient_temp")
 def gradient_temp(temp, ideal):
     """Handle gradient for temp around ideal temp"""
-    _max = 30
+    _max = 35
     temp = temp if temp > 0 else 0
     temp = temp if temp < _max else temp
-    c1 = Color("blue")
-    c2 = Color("white")
-    gradient_cold = list(c1.range_to(c2, ideal + 1))
-    c1 = Color("white")
-    c2 = Color("red")
-    gradient_hot = list(c1.range_to(c2, _max + 1))
-    gradient = gradient_cold + gradient_hot
-    return gradient[int(temp)].hex
+
+    gradient = []
+
+    for temperature in range(ideal):
+        temp_luminance = 50 + (50 / ideal) * temperature
+        gradient.append("hsl(220,100%,{}%)".format(round(temp_luminance)))
+
+    for temperature in range(_max - ideal + 1):
+        temp_luminance = 100 - (50 / (_max - ideal + 1)) * temperature
+        gradient.append("hsl(0,100%,{}%)".format(round(temp_luminance)))
+
+    gradient.append("hsl(0,100%,50%)")
+
+    return gradient[round(temp)]
 
 
 @app.template_filter("day")
@@ -91,7 +98,7 @@ def day(value):
 
 @app.template_filter("proba")
 def proba(hour):
-    """Compute a proba and output gradient color"""
+    """Compute a proba based on arbitraty comfort parameters"""
     chance = int(hour["chance_of_rain"]) / 100
     precip = min(hour["precip_mm"], MAX_RAIN_ACCEPTABLE)
     wind = min(hour["wind_kph"], MAX_WIND_ACCEPTABLE)
@@ -101,7 +108,7 @@ def proba(hour):
     # wind is twice as annoying as rain
     p = (p_precip + p_wind * 2) / 3
 
-    return gradient((1 - p) * 100, max=100, end="green")
+    return int(round((1 - p) * 100, 0))
 
 
 @app.template_filter("localized_condition")
