@@ -1,0 +1,212 @@
+# Translations template for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-10-30 17:29+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: app.py:140
+msgid "No data"
+msgstr ""
+
+#: app.py:141 app.py:142
+msgid "Very good"
+msgstr ""
+
+#: app.py:143 app.py:144
+msgid "Good"
+msgstr ""
+
+#: app.py:145
+msgid "Average"
+msgstr ""
+
+#: app.py:146 app.py:147
+msgid "Below average"
+msgstr ""
+
+#: app.py:148 app.py:149
+msgid "Bad"
+msgstr ""
+
+#: app.py:150
+msgid "Very bad"
+msgstr ""
+
+#: app.py:218
+msgid "EEEE, MMMM d"
+msgstr ""
+
+#: templates/index.html:185
+msgid "No data found"
+msgstr ""
+
+#: templates/index.html:194
+msgid "Location"
+msgstr ""
+
+#: templates/index.html:196 templates/index.html:384
+msgid "Go !"
+msgstr ""
+
+#: templates/index.html:203
+msgid "No data found. Wrong location?"
+msgstr ""
+
+#: templates/index.html:207
+msgid "Now"
+msgstr ""
+
+#: templates/index.html:211 templates/index.html:258 templates/index.html:349
+#: templates/index.html:355
+msgid "°C"
+msgstr ""
+
+#: templates/index.html:217
+msgid "Updated"
+msgstr ""
+
+#: templates/index.html:221
+msgid "Air quality"
+msgstr ""
+
+#: templates/index.html:228
+msgid "Wind speed"
+msgstr ""
+
+#: templates/index.html:231 templates/index.html:238 templates/index.html:318
+msgid "kph"
+msgstr ""
+
+#: templates/index.html:235
+msgid "Wind gust"
+msgstr ""
+
+#: templates/index.html:242 templates/index.html:324
+msgid "Wind direction"
+msgstr ""
+
+#: templates/index.html:253
+msgid "Precipitation"
+msgstr ""
+
+#: templates/index.html:254 templates/index.html:342
+msgid "mm"
+msgstr ""
+
+#: templates/index.html:257 templates/index.html:353
+msgid "Feels like"
+msgstr ""
+
+#: templates/index.html:264
+msgid "Legend"
+msgstr ""
+
+#: templates/index.html:267
+msgid ""
+"A ride opportunity indicator, based on rain, wind, day/night, extreme "
+"temps and risk of ice. The higher the number, the worse the conditions "
+"and the more dangerous the ride."
+msgstr ""
+
+#: templates/index.html:268
+msgid "See source code <code>def proba_value(hour):</code> for details."
+msgstr ""
+
+#: templates/index.html:269
+msgid "Linear gradient from 0 (green) to 40 (red)."
+msgstr ""
+
+#: templates/index.html:271
+#, python-format
+msgid ""
+"Wind speed in kilometers per hour, shown with the repetiton of the emoji "
+"💨. Zero to two is okay, three and four (for speeds above "
+"%(max_wind)s<abbr title='kilometers per hour'>kph</abbr>) are strong to "
+"very strong winds."
+msgstr ""
+
+#: templates/index.html:272
+msgid "Wind directions, in degrees."
+msgstr ""
+
+#: templates/index.html:274
+msgid "Precipitation in millimeters per hour."
+msgstr ""
+
+#: templates/index.html:275
+#, python-format
+msgid "Vertical scale from 0 to %(max_rain)s<abbr title='millimeters'>mm</abbr>."
+msgstr ""
+
+#: templates/index.html:276
+msgid ""
+"Temperature in degree Celcius. Scale from 0<abbr title='degrees "
+"Celcius'>°C</abbr> (blue) to 12<abbr title='degrees Celcius'>°C</abbr> "
+"(white) and from 19<abbr title='degrees Celcius'>°C</abbr> to 35<abbr "
+"title='degrees Celcius'>°C</abbr> (orange)."
+msgstr ""
+
+#: templates/index.html:277
+msgid "Apparent temperature, in degree Celcius. Same scale as temperature."
+msgstr ""
+
+#: templates/index.html:303
+msgid "Very complicated opportunity indicator"
+msgstr ""
+
+#: templates/index.html:313
+msgid "Wind speed (kph)"
+msgstr ""
+
+#: templates/index.html:339
+msgid "Precipitation (mm)"
+msgstr ""
+
+#: templates/index.html:341
+#, python-format
+msgid ""
+"Chance of rain is %(chance_of_rain)s%(percent)s, and precipitation is "
+"%(precip_mm)s millimeters."
+msgstr ""
+
+#: templates/index.html:341
+msgid "&percnt;"
+msgstr ""
+
+#: templates/index.html:347
+msgid "Temperature"
+msgstr ""
+
+#: templates/index.html:366
+msgid "Based on an idea and code by abulte:"
+msgstr ""
+
+#: templates/index.html:367
+msgid "Support them with a pizza"
+msgstr ""
+
+#: templates/index.html:369
+msgid "Fork by joachimesque:"
+msgstr ""
+
+#: templates/index.html:370
+msgid "made in Montreuil 🍑 with pride"
+msgstr ""
+
+#: templates/index.html:376
+msgid "Language"
+msgstr ""
+
