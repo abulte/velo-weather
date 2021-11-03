@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-09-22 12:18+0200\n"
+"POT-Creation-Date: 2021-11-03 11:50+0100\n"
 "PO-Revision-Date: 2021-09-20 21:35+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,43 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app.py:86
+#: app.py:94
 msgid "EEEE, MMMM d"
 msgstr ""
 
-#: templates/index.html:54
+#: templates/index.html:85
 msgid "No data found"
 msgstr ""
 
-#: templates/index.html:62
+#: templates/index.html:93
 msgid "Location"
 msgstr ""
 
-#: templates/index.html:64
+#: templates/index.html:95
 msgid "Go !"
 msgstr ""
 
-#: templates/index.html:70
+#: templates/index.html:101
 msgid "No data found. Wrong location?"
 msgstr ""
 
-#: templates/index.html:73
+#: templates/index.html:104
 msgid "Legend"
 msgstr ""
 
-#: templates/index.html:77
+#: templates/index.html:108
 msgid "A ride opportunity indicator, based on rain and wind."
 msgstr ""
 
-#: templates/index.html:78
+#: templates/index.html:109
 msgid "See source code <code>def proba(hour):</code> for details."
 msgstr ""
 
-#: templates/index.html:79
+#: templates/index.html:110
 msgid "Linear gradient from 0 (white) to 100 (green)."
 msgstr ""
 
-#: templates/index.html:81
+#: templates/index.html:112
 #, python-format
 msgid ""
 "Wind speed in kilometers per hour, color scale from 0 (white) to "
@@ -62,27 +62,11 @@ msgid ""
 "title='kilometers per hour'>kph</abbr>."
 msgstr ""
 
-#: templates/index.html:82
+#: templates/index.html:113
 msgid "Wind directions, in degrees."
 msgstr ""
 
-#: templates/index.html:84
-msgid "Precipitation in millimeters for an hour."
-msgstr ""
-
-#: templates/index.html:85
-#, python-format
-msgid ""
-"Color scale from 0 (white) to 100&percnt; (red), based on (rain "
-"probability × preciptation) capped at %(max_rain)s<abbr "
-"title='millimeters'>mm</abbr>."
-msgstr ""
-
-#: templates/index.html:86
-msgid "Rain probability, color scale from 0 (white) to 100&percnt; (red)."
-msgstr ""
-
-#: templates/index.html:87
+#: templates/index.html:114
 msgid ""
 "Temperature in degree Celcius. Scale from 0<abbr title='degrees "
 "Celcius'>°C</abbr> (blue) to white (19<abbr title='degrees "
@@ -90,44 +74,50 @@ msgid ""
 "Celcius'>°C</abbr>)."
 msgstr ""
 
-#: templates/index.html:88
+#: templates/index.html:115
 msgid "Apparent temperature, in degree Celcius. Same scale as temperature."
 msgstr ""
 
-#: templates/index.html:143
+#: templates/index.html:116
+msgid ""
+"Rain probability in percent, expected precipiation in <abbr "
+"title='millimeters'>mm</abbr> as vertical scale (capped to 5mm)."
+msgstr ""
+
+#: templates/index.html:135
+msgid "Forecast icon"
+msgstr ""
+
+#: templates/index.html:141
 msgid "Very complicated opportunity indicator"
+msgstr ""
+
+#: templates/index.html:144 templates/index.html:182
+msgid "&percnt;"
 msgstr ""
 
 #: templates/index.html:149
 msgid "Wind speed (kph)"
 msgstr ""
 
-#: templates/index.html:155
+#: templates/index.html:157
 msgid "Wind direction"
 msgstr ""
 
-#: templates/index.html:161
-msgid "Precipitation (mm)"
-msgstr ""
-
-#: templates/index.html:169
-msgid "Chance of rain"
-msgstr ""
-
-#: templates/index.html:171
-msgid "&percnt;"
-msgstr ""
-
-#: templates/index.html:175
+#: templates/index.html:167
 msgid "Temperature"
 msgstr ""
 
-#: templates/index.html:177 templates/index.html:183
+#: templates/index.html:169 templates/index.html:175
 msgid "°C"
 msgstr ""
 
-#: templates/index.html:181
+#: templates/index.html:173
 msgid "Feels like"
+msgstr ""
+
+#: templates/index.html:179
+msgid "Rain probability"
 msgstr ""
 
 #: templates/index.html:192
@@ -282,5 +272,24 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Precipitation (<abbr title='millimeters'>mm</abbr>)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Color scale from 0 (white) to "
+#~ "100&percnt; (red), based on (rain "
+#~ "probability × preciptation) capped at "
+#~ "%(max_rain)s<abbr title='millimeters'>mm</abbr>."
+#~ msgstr ""
+
+#~ msgid "&percnt;"
+#~ msgstr ""
+
+#~ msgid "°C"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Rain probability in percent, expected "
+#~ "precipiation in mm as vertical scale "
+#~ "(caped to 5mm)."
 #~ msgstr ""
 

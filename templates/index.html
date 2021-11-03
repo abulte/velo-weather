@@ -90,30 +90,30 @@
                 </div>
                 <div class="col form">
                     <form method="GET" action="/" id="location-form">
-                        <input list="locations" type="text" name="location" id="location" autocomplete="off" value="{{ location }}" aria-label="{{ _("Location") }}">
+                        <input list="locations" type="text" name="location" id="location" autocomplete="off" value="{{ location }}" aria-label="{{ _('Location') }}">
                         <datalist id="locations"></datalist>
-                        <button type="submit">{{ _("Go !") }}</button>
+                        <button type="submit">{{ _('Go !') }}</button>
                     </form>
                 </div>
             </div>
         </header>
         {% if not data %}
-        🤕 {{ _("No data found. Wrong location?") }}
+        🤕 {{ _('No data found. Wrong location?') }}
         {% else %}
         <details>
-            <summary>💡 {{ _("Legend") }}</summary>
+            <summary>💡 {{ _('Legend') }}</summary>
             <p>
                 <ul>
                     <li>
-                        🎲 {{ _("A ride opportunity indicator, based on rain and wind.") }}
-                        {{ _("See source code <code>def proba(hour):</code> for details.") }}
-                        {{ _("Linear gradient from 0 (white) to 100 (green).") }}
+                        🎲 {{ _('A ride opportunity indicator, based on rain and wind.') }}
+                        {{ _('See source code <code>def proba(hour):</code> for details.') }}
+                        {{ _('Linear gradient from 0 (white) to 100 (green).') }}
                     </li>
-                    <li>💨 {{ _("Wind speed in kilometers per hour, color scale from 0 (white) to %(max_wind)s (red), capped at the max wind speed of %(max_wind)s<abbr title='kilometers per hour'>kph</abbr>.", max_wind=max_wind) }}</li>
-                    <li>🧭 {{ _("Wind directions, in degrees.") }}</li>
-                    <li>🌡 {{ _("Temperature in degree Celcius. Scale from 0<abbr title='degrees Celcius'>°C</abbr> (blue) to white (19<abbr title='degrees Celcius'>°C</abbr>) and from white to red (30<abbr title='degrees Celcius'>°C</abbr>).") }}</li>
-                    <li>🥶 {{ _("Apparent temperature, in degree Celcius. Same scale as temperature.") }}</li>
-                    <li>☔️ {{ _("Rain probability in percent, expected precipiation in mm as vertical scale (caped to 5mm).") }}</li>
+                    <li>💨 {{ _('Wind speed in kilometers per hour, color scale from 0 (white) to %(max_wind)s (red), capped at the max wind speed of %(max_wind)s<abbr title=\'kilometers per hour\'>kph</abbr>.', max_wind=max_wind) }}</li>
+                    <li>🧭 {{ _('Wind directions, in degrees.') }}</li>
+                    <li>🌡 {{ _('Temperature in degree Celcius. Scale from 0<abbr title=\'degrees Celcius\'>°C</abbr> (blue) to white (19<abbr title=\'degrees Celcius\'>°C</abbr>) and from white to red (30<abbr title=\'degrees Celcius\'>°C</abbr>).') }}</li>
+                    <li>🥶 {{ _('Apparent temperature, in degree Celcius. Same scale as temperature.') }}</li>
+                    <li>☔️ {{ _('Rain probability in percent, expected precipiation in <abbr title=\'millimeters\'>mm</abbr> as vertical scale (capped to 5mm).') }}</li>
                 </ul>
             </p>
         </details>
@@ -132,21 +132,21 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th title="Forecast icon"></th>
+                        <th title="{{ _('Forecast icon') }}"></th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td><img style="max-width: 25px;" src="{{ hour.condition.icon }}" alt="{{ hour.condition.code|localized_condition }}"></td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="{{ _("Very complicated opportunity indicator") }}">🎲</th>
+                        <th title="{{ _('Very complicated opportunity indicator') }}">🎲</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour|proba|gradient(100, end='green') }};">
-                            <span class="value">{{ hour|proba }}%</span>
+                            <span class="value">{{ hour|proba }}{{ _('&percnt;') }}</span>
                         </td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="{{ _("Wind speed (kph)") }}">💨</th>
+                        <th title="{{ _('Wind speed (kph)') }}">💨</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour.wind_kph|gradient(max_wind) }};">
                             <span class="value">{{ hour.wind_kph }}</span>
@@ -154,7 +154,7 @@
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="{{ _("Wind direction") }}">🧭</th>
+                        <th title="{{ _('Wind direction') }}">🧭</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td>
                             <span aria-hidden class="degree" style="transform: rotate({{ hour.wind_degree }}deg);">↓</span>
@@ -164,22 +164,22 @@
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="{{ _("Temperature") }}">🌡</th>
+                        <th title="{{ _('Temperature') }}">🌡</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td style="background-color: {{ hour.temp_c|gradient_temp(19) }};"><span class="value">{{ hour.temp_c }}°</span></td>
+                        <td style="background-color: {{ hour.temp_c|gradient_temp(19) }};"><span class="value">{{ hour.temp_c }}{{ _('°C') }}</span></td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="{{ _("Feels like") }}">🥶</th>
+                        <th title="{{ _('Feels like') }}">🥶</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td style="background-color: {{ hour.feelslike_c|gradient_temp(19) }};"><span class="value">{{ hour.feelslike_c }}°</span></td>
+                        <td style="background-color: {{ hour.feelslike_c|gradient_temp(19) }};"><span class="value">{{ hour.feelslike_c }}{{ _('°C') }}</span></td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="{{ _("Rain probability") }}">☔️</th>
+                        <th title="{{ _('Rain probability') }}">☔️</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td class="cell_precipitation" style="--bg-color: hsl(210, 80%, {{ 100 - hour.chance_of_rain / 2 }}%); --bg-height: {{ hour.precip_mm|precip_percent }}%;" title="Chance of rain is {{ hour.chance_of_rain }}%, and precipitation is {{ hour.precip_mm }} millimeters.">
-                            <span class="value">{{ hour.chance_of_rain }}%</span>
+                            <span class="value">{{ hour.chance_of_rain }}{{ _('&percnt;') }}</span>
                         </td>
                         {% endfor %}
                     </tr>
@@ -189,7 +189,7 @@
         {% endfor %}
         {% endif %}
         <footer>
-            <a href="https://github.com/abulte/velo-weather">{{ _("Source code") }}</a> | <a href="https://www.buymeacoffee.com/abulte">{{ _("Buy me a pizza") }} 🍕</a>
+            <a href="https://github.com/abulte/velo-weather">{{ _('Source code') }}</a> | <a href="https://www.buymeacoffee.com/abulte">{{ _('Buy me a pizza') }} 🍕</a>
         </footer>
         <script>
             function submitForm() {
