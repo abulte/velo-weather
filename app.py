@@ -77,7 +77,7 @@ def gradient_temp(temp, ideal):
 
 
 @app.template_filter("day")
-def day(value, format="%A %d %b"):
+def day(value):
     """Use Babel to localize a date from ISO with language-specific format"""
     if value is None:
         return ""
