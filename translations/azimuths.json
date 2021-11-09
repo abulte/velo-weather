@@ -1,0 +1,66 @@
+{
+  "N": {
+    "en": ["N", "North"],
+    "fr": ["N", "Nord"]
+  },
+  "NNE": {
+    "en": ["NNE", "North North East"],
+    "fr": ["NNE", "Nord Nord Est"]
+  },
+  "NE": {
+    "en": ["NE", "North East"],
+    "fr": ["NE", "Nord Est"]
+  },
+  "ENE": {
+    "en": ["ENE", "East North East"],
+    "fr": ["ENE", "Est Nord Est"]
+  },
+  "E": {
+    "en": ["E", "East"],
+    "fr": ["E", "Est"]
+  },
+  "ESE": {
+    "en": ["ESE", "East South East"],
+    "fr": ["ESE", "Est Sud Est"]
+  },
+  "SE": {
+    "en": ["SE", "South East"],
+    "fr": ["SE", "Sud Est"]
+  },
+  "SSE": {
+    "en": ["SSE", "South South East"],
+    "fr": ["SSE", "Sud Sud Est"]
+  },
+  "S": {
+    "en": ["S", "South"],
+    "fr": ["S", "Sud"]
+  },
+  "SSW": {
+    "en": ["SSW", "South South West"],
+    "fr": ["SSO", "Sud Sud Ouest"]
+  },
+  "SW": {
+    "en": ["SW", "South West"],
+    "fr": ["SO", "Sud Ouest"]
+  },
+  "WSW": {
+    "en": ["WSW", "West South West"],
+    "fr": ["OSO", "Ouest Sud Ouest"]
+  },
+  "W": {
+    "en": ["W", "West"],
+    "fr": ["O", "Ouest"]
+  },
+  "WNW": {
+    "en": ["WNW", "West North West"],
+    "fr": ["ONO", "Ouest Nord Ouest"]
+  },
+  "NW": {
+    "en": ["NW", "North West"],
+    "fr": ["NO", "Nord Ouest"]
+  },
+  "NNW": {
+    "en": ["NNW", "North North West"],
+    "fr": ["NNO", "Nord Nord Ouest"]
+  }
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ get_locale() }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,6 +47,9 @@
         section {
             margin-top: 2em;
         }
+        small {
+            font-size: .8em;
+        }
         td .value {
             display: inline-flex;
             min-height: 2.6rem;
@@ -79,7 +82,7 @@
 </head>
 <body>
     <div class="container">
-        {% set location = data.location.name + ", " + data.location.country if data else "No data found" %}
+        {% set location = data.location.name + ", " + data.location.country if data else _('No data found') %}
         <header>
             <div class="row">
                 <div class="col">
@@ -87,37 +90,37 @@
                 </div>
                 <div class="col form">
                     <form method="GET" action="/" id="location-form">
-                        <input list="locations" type="text" name="location" id="location" autocomplete="off" value="{{ location }}">
+                        <input list="locations" type="text" name="location" id="location" autocomplete="off" value="{{ location }}" aria-label="{{ _('Location') }}">
                         <datalist id="locations"></datalist>
-                        <button type="submit">Go !</button>
+                        <button type="submit">{{ _('Go !') }}</button>
                     </form>
                 </div>
             </div>
         </header>
         {% if not data %}
-        🤕 No data found. Wrong location?
+        🤕 {{ _('No data found. Wrong location?') }}
         {% else %}
         <details>
-            <summary>💡 Legend</summary>
+            <summary>💡 {{ _('Legend') }}</summary>
             <p>
                 <ul>
                     <li>
-                        🎲 A ride opportunity indicator, based on rain and wind.
-                        See source code <code>def proba(hour):</code> for details.
-                        Linear gradient from 0 (white) to 100 (green).
+                        🎲 {{ _('A ride opportunity indicator, based on rain and wind.') }}
+                        {{ _('See source code <code>def proba(hour):</code> for details.') }}
+                        {{ _('Linear gradient from 0 (white) to 100 (green).') }}
                     </li>
-                    <li>💨 Wind speed in kph, color scale from 0 (white) to {{ max_wind }} (red), caped on max wind speed of {{ max_wind }}kph.</li>
-                    <li>🧭 Wind directions, in degrees.</li>
-                    <li>🌡 Temperature in °C. Scale from 0°C (blue) to white (19°C) and from white to red (35°C).</li>
-                    <li>🥶 Feels like °C. Same scale as temperature.</li>
-                    <li>☔️ Rain probability in percent, expected precipiation in mm as vertical scale (caped to 5mm).</li>
+                    <li>💨 {{ _('Wind speed in kilometers per hour, color scale from 0 (white) to %(max_wind)s (red), capped at the max wind speed of %(max_wind)s<abbr title=\'kilometers per hour\'>kph</abbr>.', max_wind=max_wind) }}</li>
+                    <li>🧭 {{ _('Wind directions, in degrees.') }}</li>
+                    <li>🌡 {{ _('Temperature in degree Celcius. Scale from 0<abbr title=\'degrees Celcius\'>°C</abbr> (blue) to white (19<abbr title=\'degrees Celcius\'>°C</abbr>) and from white to red (30<abbr title=\'degrees Celcius\'>°C</abbr>).') }}</li>
+                    <li>🥶 {{ _('Apparent temperature, in degree Celcius. Same scale as temperature.') }}</li>
+                    <li>☔️ {{ _('Rain probability in percent, expected precipiation in <abbr title=\'millimeters\'>mm</abbr> as vertical scale (capped to 5mm).') }}</li>
                 </ul>
             </p>
         </details>
         {% set forecasts = data.forecast.forecastday %}
         {% for forecast in forecasts %}
         <section>
-            <h2><img src="{{ forecast.day.condition.icon }}" alt="{{ forecast.day.condition.text }}"> {{ forecast.date|day }}</h2>
+            <h2><img src="{{ forecast.day.condition.icon }}" alt="{{ forecast.day.condition.code|localized_condition }}"> {{ forecast.date|day }}</h2>
             <table tabindex="-1">
                 <thead>
                     <tr>
@@ -129,21 +132,21 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th title="Forecast icon"></th>
+                        <th title="{{ _('Forecast icon') }}"></th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td><img style="max-width: 25px;" src="{{ hour.condition.icon }}" alt="{{ hour.condition.text }}"></td>
+                        <td><img style="max-width: 25px;" src="{{ hour.condition.icon }}" alt="{{ hour.condition.code|localized_condition }}"></td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="Very complicated opportunity indicator">🎲</th>
+                        <th title="{{ _('Very complicated opportunity indicator') }}">🎲</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour|proba|gradient(100, end='green') }};">
-                            <span class="value">{{ hour|proba }}%</span>
+                            <span class="value">{{ hour|proba }}{{ _('&percnt;') }}</span>
                         </td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="Wind speed (kph)">💨</th>
+                        <th title="{{ _('Wind speed (kph)') }}">💨</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td style="background-color: {{ hour.wind_kph|gradient(max_wind) }};">
                             <span class="value">{{ hour.wind_kph }}</span>
@@ -151,32 +154,32 @@
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="Wind direction">🧭</th>
+                        <th title="{{ _('Wind direction') }}">🧭</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td title="{{ hour.wind_dir }}">
-                            <span class="value">
-                                <span class="degree" style="transform: rotate({{ hour.wind_degree }}deg);">↓</span>
-                            </span>
+                        <td>
+                            <span aria-hidden class="degree" style="transform: rotate({{ hour.wind_degree }}deg);">↓</span>
+                            <br>
+                            <small><abbr title="{{ hour.wind_dir|localized_azimuth|last }}">{{ hour.wind_dir|localized_azimuth|first }}</abbr></small>
                         </td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="Temperature">🌡</th>
+                        <th title="{{ _('Temperature') }}">🌡</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td style="background-color: {{ hour.temp_c|gradient_temp(19) }};"><span class="value">{{ hour.temp_c }}°</span></td>
+                        <td style="background-color: {{ hour.temp_c|gradient_temp(19) }};"><span class="value">{{ hour.temp_c }}{{ _('°C') }}</span></td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="Feels like">🥶</th>
+                        <th title="{{ _('Feels like') }}">🥶</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
-                        <td style="background-color: {{ hour.feelslike_c|gradient_temp(19) }};"><span class="value">{{ hour.feelslike_c }}°</span></td>
+                        <td style="background-color: {{ hour.feelslike_c|gradient_temp(19) }};"><span class="value">{{ hour.feelslike_c }}{{ _('°C') }}</span></td>
                         {% endfor %}
                     </tr>
                     <tr>
-                        <th title="Chance of rain">☔️</th>
+                        <th title="{{ _('Rain probability') }}">☔️</th>
                         {% for hour in forecast.hour|selectattr("is_day") %}
                         <td class="cell_precipitation" style="--bg-color: hsl(210, 80%, {{ 100 - hour.chance_of_rain / 2 }}%); --bg-height: {{ hour.precip_mm|precip_percent }}%;" title="Chance of rain is {{ hour.chance_of_rain }}%, and precipitation is {{ hour.precip_mm }} millimeters.">
-                            <span class="value">{{ hour.chance_of_rain }}%</span>
+                            <span class="value">{{ hour.chance_of_rain }}{{ _('&percnt;') }}</span>
                         </td>
                         {% endfor %}
                     </tr>
@@ -186,7 +189,7 @@
         {% endfor %}
         {% endif %}
         <footer>
-            <a href="https://github.com/abulte/velo-weather">Source code</a> | <a href="https://www.buymeacoffee.com/abulte">Buy me a pizza 🍕</a>
+            <a href="https://github.com/abulte/velo-weather">{{ _('Source code') }}</a> | <a href="https://www.buymeacoffee.com/abulte">{{ _('Buy me a pizza') }} 🍕</a>
         </footer>
         <script>
             function submitForm() {

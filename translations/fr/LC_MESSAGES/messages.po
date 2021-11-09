@@ -1,0 +1,144 @@
+# French translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-11-03 11:50+0100\n"
+"PO-Revision-Date: 2021-09-20 21:34+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: app.py:94
+msgid "EEEE, MMMM d"
+msgstr "EEEE d MMMM"
+
+#: templates/index.html:85
+msgid "No data found"
+msgstr "Aucune donnée trouvée"
+
+#: templates/index.html:93
+msgid "Location"
+msgstr "Localisation"
+
+#: templates/index.html:95
+msgid "Go !"
+msgstr "Aller&nbsp;!"
+
+#: templates/index.html:101
+msgid "No data found. Wrong location?"
+msgstr "Aucune donnée trouvée. Mauvaise localisation&nbsp;?"
+
+#: templates/index.html:104
+msgid "Legend"
+msgstr "Légende"
+
+#: templates/index.html:108
+msgid "A ride opportunity indicator, based on rain and wind."
+msgstr ""
+"Un indicateur d’opportunité de sortie à vélo, basée sur la pluie et le "
+"vent."
+
+#: templates/index.html:109
+msgid "See source code <code>def proba(hour):</code> for details."
+msgstr ""
+"Regardez dans le code source <code>def proba(hour):</code> pour avoir des"
+" détails."
+
+#: templates/index.html:110
+msgid "Linear gradient from 0 (white) to 100 (green)."
+msgstr "Dégradé linéaire de 0 (blanc) à 100 (vert)."
+
+#: templates/index.html:112
+#, python-format
+msgid ""
+"Wind speed in kilometers per hour, color scale from 0 (white) to "
+"%(max_wind)s (red), capped at the max wind speed of %(max_wind)s<abbr "
+"title='kilometers per hour'>kph</abbr>."
+msgstr ""
+"Vitesse du vent en kilomètres par heure, sur une echelle de 0 (white) à "
+"%(max_wind)s (rouge), limité à la vitesse maximum de "
+"%(max_wind)s&nbsp;<abbr title='kilomètres/heure'>km/h</abbr>."
+
+#: templates/index.html:113
+msgid "Wind directions, in degrees."
+msgstr "Direction du vent, en degrés."
+
+#: templates/index.html:114
+msgid ""
+"Temperature in degree Celcius. Scale from 0<abbr title='degrees "
+"Celcius'>°C</abbr> (blue) to white (19<abbr title='degrees "
+"Celcius'>°C</abbr>) and from white to red (30<abbr title='degrees "
+"Celcius'>°C</abbr>)."
+msgstr ""
+"Température, en degré Celcius. Échelle de 0&nbsp;<abbr title='degrés "
+"Celcius'>°C</abbr> (bleu) à blanc (19&nbsp;<abbr title='degrés "
+"Celcius'>°C</abbr>)et de blanc à rouge (30&nbsp;<abbr title='degrees "
+"Celcius'>°C</abbr>)."
+
+#: templates/index.html:115
+msgid "Apparent temperature, in degree Celcius. Same scale as temperature."
+msgstr "Température ressentie, en degré Celcius. Même échelle que la température."
+
+#: templates/index.html:116
+msgid ""
+"Rain probability in percent, expected precipiation in <abbr "
+"title='millimeters'>mm</abbr> as vertical scale (capped to 5mm)."
+msgstr ""
+"Probabilité de pluie en pourcentage, précipitation prévue en <abbr "
+"title='millimètres'>mm</abbr> sur une échelle verticale (limitée à "
+"5&nbsp;mm)"
+
+#: templates/index.html:135
+msgid "Forecast icon"
+msgstr "Icône de la prévision"
+
+#: templates/index.html:141
+msgid "Very complicated opportunity indicator"
+msgstr "Indicateur d’opportunité super compliqué"
+
+#: templates/index.html:144 templates/index.html:182
+msgid "&percnt;"
+msgstr "&nbsp;&percnt;"
+
+#: templates/index.html:149
+msgid "Wind speed (kph)"
+msgstr "Vitesse du vent (km/h)"
+
+#: templates/index.html:157
+msgid "Wind direction"
+msgstr "Direction du vent"
+
+#: templates/index.html:167
+msgid "Temperature"
+msgstr "Température"
+
+#: templates/index.html:169 templates/index.html:175
+msgid "°C"
+msgstr "&nbsp;°C"
+
+#: templates/index.html:173
+msgid "Feels like"
+msgstr "Température ressentie"
+
+#: templates/index.html:179
+msgid "Rain probability"
+msgstr "Probabilité de pluie"
+
+#: templates/index.html:192
+msgid "Source code"
+msgstr "Code source"
+
+#: templates/index.html:192
+msgid "Buy me a pizza"
+msgstr "Offrez-moi une pizza"
+
