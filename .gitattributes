@@ -1,0 +1,6 @@
+# Detect text files automatically
+* text=auto
+
+# Encrypt secret yml files
+*secret* filter=git-crypt diff=git-crypt
+*secrets* filter=git-crypt diff=git-crypt

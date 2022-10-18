@@ -1,0 +1,4 @@
+---
+install_dir: /home/alexandre/velo-weather
+git_repo: https://github.com/abulte/velo-weather.git
+user: alexandre

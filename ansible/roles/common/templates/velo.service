@@ -1,0 +1,19 @@
+[Unit]
+Description=velo uWSGI app
+After=syslog.target
+
+[Service]
+ExecStart={{ install_dir }}/pyenv/bin/uwsgi \
+	--socket :8001 --manage-script-name --mount /velo=app:app \
+	--virtualenv {{ install_dir }}/pyenv/ \
+	--chdir {{ install_dir }}
+User={{ user }}
+Group=www-data
+Restart=on-failure
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,31 @@
+---
+
+- name: Install service file
+  template:
+    src: velo.service
+    dest: /etc/systemd/system/velo.service
+    owner: root
+    group: root
+  notify:
+    - restart service
+
+- name: Clone repo and update
+  git:
+    repo: "{{ git_repo }}"
+    dest: "{{ install_dir }}"
+    clone: yes
+    update: yes
+  become: yes
+  become_user: "{{ user }}"
+  notify:
+    - restart service
+
+- name: Create venv and install requirements
+  pip:
+    requirements: "{{ install_dir }}/requirements.txt"
+    virtualenv: "{{ install_dir }}/pyenv"
+    chdir: "{{ install_dir }}"
+  become: yes
+  become_user: "{{ user }}"
+  notify:
+    - restart service
