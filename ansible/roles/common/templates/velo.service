@@ -3,6 +3,7 @@ Description=velo uWSGI app
 After=syslog.target
 
 [Service]
+Environment="WEATHER_API_KEY={{ weather_api_key }}"
 ExecStart={{ install_dir }}/pyenv/bin/uwsgi \
 	--socket :8001 --manage-script-name --mount /velo=app:app \
 	--virtualenv {{ install_dir }}/pyenv/ \
