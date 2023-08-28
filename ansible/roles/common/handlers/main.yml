@@ -1,8 +1,0 @@
----
-
-- name: restart service
-  systemd:
-    state: restarted
-    daemon_reload: yes
-    name: velo
-    enabled: yes
